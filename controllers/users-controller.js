@@ -1,7 +1,7 @@
 // Require Users Model
 const {Users} = require('../models');
 
-const usersController = {
+const userController = {
     // get all users
     getAllUsers(req, res) {
       Users.find({})
@@ -21,7 +21,7 @@ const usersController = {
     getUsersById({ params }, res) {
         Users.findOne({ _id: params.id })
           .populate({
-            path: 'comments',
+            path: 'thoughs',
             select: '-__v'
           })
           .select('-__v')
@@ -87,3 +87,4 @@ const usersController = {
     }
 
     };
+    module.exports = userController; 

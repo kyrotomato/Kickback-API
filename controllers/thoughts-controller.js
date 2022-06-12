@@ -58,7 +58,26 @@ const thoughtsController = {
       Thought.findOneAndDelete({ _id: params.id })
         .then(dbThoughtData => res.json(dbThoughtData))
         .catch(err => res.json(err));
-    }
+    },
+        // createThought
+    createThought({ body }, res) {
+      Thought.create(body)
+        .then(dbThoughtData => res.json(dbThoughtData))
+        .catch(err => res.json(err));
+    },
+      // createreaction
+      addReaction({ body }, res) {
+        Reaction.create(body)
+          .then(dbReactionData => res.json(dbReactionData))
+          .catch(err => res.json(err));
+      },
+      // delete reaction
+      deleteReaction({ params }, res) {
+        Reaction.findOneAndDelete({ _id: params.id })
+          .then(dbReactionData => res.json(dbReactionData))
+          .catch(err => res.json(err));
+      }
+      
   };
   
   module.exports = thoughtsController;
